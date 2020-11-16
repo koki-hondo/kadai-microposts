@@ -22,14 +22,14 @@
     </li>
 
     <li class="nav-item">
-        <a href="{{ route('users.favorites', ['id' => $user->id]) }}" class="nav-link {{ Request::routeIs('users.favorites') ? 'active' : '' }}">
+        <a href="{{ route('favorites.favorite', ['id' => $user->id]) }}" class="nav-link {{ Request::routeIs('favorites.favorite') ? 'active' : '' }}">
             Favorites
             <span class="badge badge-secondary">{{ $user->favorites_count }}</span>
         </a>
     </li>
 
     <li class="nav-item">
-        <a href="{{ route('users.favorite_users', ['id' => $user->id]) }}" class="nav-link {{ Request::routeIs('users.favorite_users') ? 'active' : '' }}">
+        <a href="{{ route('favorites.unfavorite', ['id' => $user->id]) }}" class="nav-link {{ Request::routeIs('favorites.unfavorite') ? 'active' : '' }}">
             Favorite_users
             <span class="badge badge-secondary">{{ $user->favorite_users_count }}</span>
         </a>
