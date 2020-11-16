@@ -77,4 +77,42 @@ class UsersController extends Controller
             'users' => $followers,
         ]);
     }
+    
+        public function favorites($id)
+    {
+        // idの値でユーザを検索して取得
+        $user = User::findOrFail($id);
+
+        // 関係するモデルの件数をロード
+        $user->loadRelationshipCounts();
+
+        // ユーザのフォロー一覧を取得
+        $favorites = $user->favorites()->paginate(10);
+
+        // フォロー一覧ビューでそれらを表示
+        return view('users.favorites', [
+            'user' => $user,
+            'users' => $favorites,
+        ]);
+    }
+
+
+    public function favorite_users($id)
+    {
+        // idの値でユーザを検索して取得
+        $user = User::findOrFail($id);
+
+        // 関係するモデルの件数をロード
+        $user->loadRelationshipCounts();
+
+        // ユーザのフォロワー一覧を取得
+        $favorite_users = $user->favorite_users()->paginate(10);
+
+        // フォロワー一覧ビューでそれらを表示
+        return view('users.favorite_users', [
+            'user' => $user,
+            'users' => $favorite_users,
+        ]);
+    }
+    
 }
